@@ -11,6 +11,7 @@ const connectDB = require("./config/db");
 // Import Routes
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const leadRoutes = require("./routes/leadRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -31,6 +32,9 @@ app.use("/api/auth", authRoutes);
 
 // User Routes
 app.use("/api/users", userRoutes);
+
+// Lead Routes
+app.use("/api/leads", leadRoutes);
 
 // Server Port
 const PORT = process.env.PORT || 5000;
