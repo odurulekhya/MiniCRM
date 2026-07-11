@@ -8,12 +8,18 @@ const {
   deleteLead,
 } = require("../controllers/leadController");
 
-const authMiddleware = require("../middleware/authMiddleware");
+const { protect } = require("../middleware/authMiddleware");
 
-// Protected Routes
-router.post("/", authMiddleware, createLead);
-router.get("/", authMiddleware, getLeads);
-router.put("/:id", authMiddleware, updateLead);
-router.delete("/:id", authMiddleware, deleteLead);
+// Create Lead
+router.post("/", protect, createLead);
+
+// Get All Leads
+router.get("/", protect, getLeads);
+
+// Update Lead
+router.put("/:id", protect, updateLead);
+
+// Delete Lead
+router.delete("/:id", protect, deleteLead);
 
 module.exports = router;
